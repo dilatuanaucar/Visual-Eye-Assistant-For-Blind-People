@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:visibility="visible"
+    tools:context=".WelcomeLoadingPage">
+
+    <View
+        android:layout_width="105dp"
+        android:layout_height="2dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="175dp"
+        android:layout_marginTop="230dp"
+        android:layout_marginBottom="98dp"
+        android:background="#000000" />
+    <View
+        android:layout_width="80dp"
+        android:layout_height="1.5dp"
+        android:layout_alignBottom="@+id/textView"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="175dp"
+        android:layout_marginTop="80dp"
+        android:layout_marginBottom="18dp"
+        android:background="#7A6969" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="141dp"
+        android:layout_height="128dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="208dp"
+        android:fontFamily="@font/amethysta"
+        android:gravity="center"
+        android:text="@string/welcome_page_text"
+        android:textAllCaps="false"
+        android:textColor="#000000"
+        android:textScaleX="1.3"
+        android:textSize="50dp" />
+
+</RelativeLayout>
