@@ -6,13 +6,13 @@ Bu projede, COCO veri kümesinde eğitilmiş nicelenmiş bir MobileNet SSD model
 size yol gösterir.
 
 Android Studio'yu kullanarak demo oluşturulur.
-Nesne Tanıma için
-
-Tensorflow için gerekli olan nesne dedektörleri entegre edildi.
+Nesne Tanıma için Tensorflow için gerekli olan nesne dedektörleri entegre edildi.
 Java'da çıkarımı çalıştırıldı.
-Adım 1: Gradle bağımlılığını ve diğer ayarları içe aktarın
-Kopya .tflite modeli idare edilecek Android modülün varlıkları dizinine model dosyası. Dosya sıkıştırılmış gerektiğini belirtin ve modülün için 
-TensorFlow Lite kütüphanesini eklemek build.gradle dosyası:
+
+
+Adım 1: Gradle bağımlılığını ve diğer ayarları içe aktarın.
+
+build.gradle dosyası:
 android {
     // Other settings
 
@@ -44,7 +44,7 @@ grafiğini almak için bu kodu çalıştırın. python3 object_detection/export_
  --output_arrays=TFLite_Detection_PostProcess,TFLite_Detection_PostProcess:1,TFLite_Detection_PostProcess:2,TFLite_Detection_PostProcess:3 \ 
 --allow_custom_ops \ --graph_def_file=exported_model/tflite_graph.pb \
  --output_file=<directory with the TensorFlow examples repository>/lite/examples/object_detection/android/app/src/main/assets/detect.tflite 
-input_shape=1,300,300,3çünkü eğitilmiş  model yalnızca bu girdi şekliyle çalışır.
+input_shape=1,300,300,3 çünkü eğitilmiş model yalnızca bu girdi şekliyle çalışır.
 
 
 allow_custom_ops TFLite_Detection_PostProcess işlemine izin vermek için gereklidir.
@@ -55,8 +55,8 @@ input_arraysve output_arraysörnek algılama modelinin görselleştirilmiş graf
 class-descriptions-boxable'ın ikinci sütunundan labelmap.txt dosyasını alındı.
 DetectorActivity.java'da TF_OD_API_IS_QUANTIZED değerini false olarak ayarlandı.
 
-Ses Tanımlama için
-
+    
+Ses Tanımlama için: 
 Gradlepublic class YourActivity extends Activity {
 
     Override
@@ -74,10 +74,8 @@ Gradlepublic class YourActivity extends Activity {
     }
 }
 
-Konuşma tanıma
-Bir aktivitenin içinde:
-Speech recognition
-Inside an activity:
+Konuşma tanıma activity'nin içinde:
+
 implementation 'net.gotev:speech:x.y.z'
 
 Initialization
@@ -98,8 +96,7 @@ public class YourActivity extends Activity {
     }
 }
 
-Konuşma tanıma
-Bir aktivitenin içinde:
+Konuşma tanıma bir activity'nin içinde:
 try {
     // you must have android.permission.RECORD_AUDIO granted at this point
     Speech.getInstance().startListening(new SpeechDelegate() {
@@ -140,8 +137,7 @@ try {
     Log.e("speech", "Google voice typing must be enabled!");
 }
 
-Kaynakları yayınla
-Aktivitenin onDestroy'unda şunu eklendi:
+activity'nin onDestroy'unda şunu eklendi:
 
 @Override
 protected void onDestroy() {
@@ -150,9 +146,9 @@ protected void onDestroy() {
 
 SpeechProgressView'ın düzgün çalışması için her zaman bir LinearLayout içinde olması önemlidir. Genişliği ve yüksekliği, çubuk yükseklik ayarlarına göre ayarlanabilir. 
 
-Daha sonra, konuşma tanımayı başlattığınızda, aynı zamanda SpeechProgressView:
+Daha sonra, konuşma tanımayı başlattığınızda, aynı zamanda 
+    SpeechProgressView:
 Speech.getInstance().startListening(speechProgressView, speechDelegate);
 
-Yapılandırma
 Geçerli yerel ayarı ve sesi alındı.
 Speech.getInstance().getSpeechToTextLanguage() ve Speech.getinstance().getTextToSpeechVoice() kullanıldı.
